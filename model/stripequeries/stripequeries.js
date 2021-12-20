@@ -33,6 +33,10 @@ paymentquery.createAccountForUser = async function(Data){
     });
 }
 
+paymentquery.retrieveToken = async function(tokenID){
+    return await stripe.tokens.retrieve(tokenID);
+}
+
 
 paymentquery.getAllAcountList = async function(limit){
     return await stripe.accounts.list({
@@ -163,6 +167,13 @@ paymentquery.subscription = async function(data){
         {price: data.priceId}
       ],
     });
+},
+
+paymentquery.getAllCards = async function(id){
+    return await stripe.customers.listSources(
+      id,
+      {object: 'card', limit: 3}
+    );
 }
 
 

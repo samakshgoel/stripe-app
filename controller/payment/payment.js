@@ -226,6 +226,31 @@ module.exports = {
             return res.status(422).send({code:422,status:'failed',msg:err.message});
         }
 
+    },
+
+    async getRetrieveToken(req,res){
+        let id = req.body.id;
+        if(!id) return res.status(422).send({code:422,status:'failed',msg:'token id is required'});
+
+        try{
+            let data = await paymentquery.retrieveToken(id);
+            console.log("Data from getretrive toekn API", data);
+            return res.status(200).send({code:200,status:'success',msg:data});
+        }catch(err){
+            console.log("error in retrieving from token ",err);
+            return res.status(422).send({code:422,status:'failed',msg:err.message});
+        }
+    },
+
+    async getAllCrad(req,res){
+        let id = req.body.id;
+
+        try{
+            let data =await paymentquery.getAllCards(id);
+            return res.send(data);
+        }catch(err){
+            console.log(err)
+        }
     }
 
 

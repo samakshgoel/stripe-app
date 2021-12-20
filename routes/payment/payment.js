@@ -19,5 +19,6 @@ ROUTE.delete('/delete-customer',paymentController.deleteCustomer);
 ROUTE.delete('/delete-account',paymentController.deleteAccount);
 ROUTE.get('/retrieve-account',paymentController.retrieveAccount);
 ROUTE.post('/subcribe',paymentController.subcribeProduct);
-
+ROUTE.get('/retrieve-token-data',paymentController.getRetrieveToken);
+ROUTE.get('/get-all-card',paymentController.getAllCrad);
 module.exports = ROUTE;
